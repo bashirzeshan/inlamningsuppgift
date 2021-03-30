@@ -37,7 +37,7 @@ public class CrossBrowserScript {
 		//Launches MsEdge Browser
 		else if(browser.equalsIgnoreCase("msedge")){
 
-			System.setProperty("webdriver.edge.driver", "/Users/irmkhaliqbhatti/Desktop/msedgedriver");
+			System.setProperty("webdriver.edge.driver", "/msedgedriver");
 
 		   driver = new EdgeDriver();
 		}
