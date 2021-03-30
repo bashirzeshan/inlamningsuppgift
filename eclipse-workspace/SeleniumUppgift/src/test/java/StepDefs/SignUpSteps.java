@@ -26,7 +26,7 @@ public class SignUpSteps {
 	@Given("user is on the application sign up page")
 	public void user_is_on_the_application_sign_up_page() throws Exception {
 		CrossBrowserScript choice = new CrossBrowserScript();
-		driver = choice.setup("chrome");
+		driver = choice.setup("firefox");
 
 	}
 

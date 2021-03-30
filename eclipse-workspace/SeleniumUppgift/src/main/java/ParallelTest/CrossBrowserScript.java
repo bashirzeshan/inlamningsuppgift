@@ -37,18 +37,20 @@ public class CrossBrowserScript {
 		//Launches MsEdge Browser
 		else if(browser.equalsIgnoreCase("msedge")){
 
-			System.setProperty("webdriver.edge.driver", "/msedgedriver");
+			System.setProperty("webdriver.edge.driver", "/Users/irmkhaliqbhatti/Desktop/msedgedriver");
 
-			driver = new EdgeDriver();
+		   driver = new EdgeDriver();
 		}
 		//Incorrect Browser
 		else{
 			throw new Exception("Browser is not correct");
 		}
-
-		driver.get("https://login.mailchimp.com/signup/");
-		driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
+		
+		driver.manage().deleteAllCookies();
+        driver.get("https://login.mailchimp.com/signup/");
 		driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
+
 		driver.manage().window().maximize();
 
 		return driver;

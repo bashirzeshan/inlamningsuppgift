@@ -1,6 +1,6 @@
 Feature: In order to use this application
          I want to register myself as a new user
-
+ 
   Scenario Outline: Sign up functionality
     Given user is on the application sign up page
     When I enter EmailID address as "<EmailID>"
@@ -12,7 +12,7 @@ Feature: In order to use this application
     @NewUser
     Examples: 
       | EmailID               | Username    | Password    | Newuser |
-      | zb001234@username.com | ab646464646 | Test?tes123 | No      |
+      | zb001234@username.com | xyz123456 | Test?tes123 | No      |
 
     @UserNameIsNotValid
     Examples: 
