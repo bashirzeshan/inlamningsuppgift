@@ -12,12 +12,12 @@ Feature: In order to use this application
     @NewUser
     Examples: 
       | EmailID               | Username    | Password    | Newuser |
-      | zb001234@username.com | xyz123456 | Test?tes123 | No      |
+      | user | xyz123456 | Test?tes123 | No      |
 
     @UserNameIsNotValid
     Examples: 
       | EmailID               | Username                                                                                                                                                                                                                                                                        | Password    | Newuser |
-      | zb001234@username.com | ab646464646uidhweuifhiuwefhueiwhfuiewhfuiewhfiuewhfiuewhfiuewhfiuewhfiuewhfiuwehfiuewhfiuewhfiuewhfiuewhfiuwehfuiewhfiuewhfiuewhfiuewhfiuewhfiuewhfiuewhf1222323hioh2ioehi2e21eih21iuehiu12heiu12heiu13heiuh31eiruh13iurhiu13heiu12heiu12heiu12heui12he1ihei12hei12hei21hei12he | Test?tes123 | No      |
+      | user| ab646464646uidhweuifhiuwefhueiwhfuiewhfuiewhfiuewhfiuewhfiuewhfiuewhfiuewhfiuwehfiuewhfiuewhfiuewhfiuewhfiuwehfuiewhfiuewhfiuewhfiuewhfiuewhfiuewhfiuewhf1222323hioh2ioehi2e21eih21iuehiu12heiu12heiu13heiuh31eiruh13iurhiu13heiu12heiu12heiu12heui12he1ihei12hei12hei21hei12he | Test?tes123 | No      |
 
     @EmailIsMissing
     Examples: 
@@ -27,4 +27,4 @@ Feature: In order to use this application
     @UserAlreadyExists
     Examples: 
       | EmailID               | Username | Password    | Newuser |
-      | zb001234@username.com | user     | Test?tes123 | No      |
+      | user | user     | Test?tes123 | No      |

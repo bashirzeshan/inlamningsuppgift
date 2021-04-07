@@ -41,9 +41,12 @@ public class SignUpSteps {
 			assertEquals("Enter a value ", expectedValue, email);
 
 		} else {
-
+			
+			// Generating random email address by using built-in random class
+		
+            String randomEmail = email + new Random().nextInt(1000) + "@username.com";
 			WebElement emailID = driver.findElement(By.cssSelector("#email"));
-			sendKeys(driver, emailID, 10, email);
+			sendKeys(driver, emailID, 10, randomEmail);
 
 		}
 

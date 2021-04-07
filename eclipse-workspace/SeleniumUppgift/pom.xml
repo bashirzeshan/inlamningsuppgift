@@ -5,8 +5,11 @@
 	<groupId>SeleniumUppgift</groupId>
 	<artifactId>SeleniumUppgift</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+
+
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+
 
 		<dependency>
 
@@ -38,6 +41,9 @@
 			<version>4.0.0-beta-1</version>
 		</dependency>
 
-
 	</dependencies>
+
+
+
+
 </project>
