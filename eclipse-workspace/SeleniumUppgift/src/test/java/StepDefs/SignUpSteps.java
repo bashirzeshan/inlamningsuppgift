@@ -1,15 +1,14 @@
 package StepDefs;
 
 import static org.junit.Assert.assertEquals;
-
 import java.util.Random;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ParallelTest.CrossBrowserScript;
+import ParallelTest.RandomString;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -23,10 +22,11 @@ public class SignUpSteps {
 
 	static WebDriver driver;
 
+
 	@Given("user is on the application sign up page")
 	public void user_is_on_the_application_sign_up_page() throws Exception {
 		CrossBrowserScript choice = new CrossBrowserScript();
-		driver = choice.setup("firefox");
+		driver = choice.setup("chrome");
 
 	}
 
@@ -41,10 +41,10 @@ public class SignUpSteps {
 			assertEquals("Enter a value ", expectedValue, email);
 
 		} else {
-			
+
 			// Generating random email address by using built-in random class
-		
-            String randomEmail = email + new Random().nextInt(1000) + "@username.com";
+
+			String randomEmail = email + RandomString.getAplhaNumeric(10) + "@username.com";
 			WebElement emailID = driver.findElement(By.cssSelector("#email"));
 			sendKeys(driver, emailID, 10, randomEmail);
 
@@ -54,26 +54,32 @@ public class SignUpSteps {
 
 	@And("I enter Username  {string}{string}")
 	public void i_enter_username(String uName, String Newuser) {
-        System.out.println(Newuser);
-		if (Newuser.equalsIgnoreCase("Yes")) {
-			if (uName.length() <= 100) {
+		System.out.println(Newuser);
+		if (Newuser.equalsIgnoreCase("No")) {
+			if (uName.equalsIgnoreCase("valid")) {
+				uName = RandomString.getAplhaNumeric(50);
 				WebElement userName = driver.findElement(By.cssSelector("#new_username"));
 				sendKeys(driver, userName, 10, uName);
-			} else {
+			} else if (uName.equalsIgnoreCase("longuser")) {
+				uName = RandomString.getAplhaNumeric(101);
 				WebElement userName = driver.findElement(By.cssSelector("#new_username"));
 				sendKeys(driver, userName, 10, uName);
 				String expectedValue = userName.getAttribute("value");
 				System.out.println("This is the value from the text field," + expectedValue);
 				assertEquals("Enter a value less than 100 characters long", expectedValue, uName);
-			}
-		} else {
-			String userName = uName + new Random().nextInt(50);
+			
+		} else  if(uName.equalsIgnoreCase("existinguser")){
+			String userName = "user" + new Random().nextInt(50);
 			WebElement actualValue = driver.findElement(By.cssSelector("#new_username"));
 			sendKeys(driver, actualValue, 10, userName);
 			String expectedValue = actualValue.getAttribute("value");
 			assertEquals("User already exists", expectedValue, userName);
+
 		}
+		}
+	
 	}
+
 
 	@And("I enter Password {string}")
 	public void i_enter_password(String psw) {
@@ -116,7 +122,7 @@ public class SignUpSteps {
 		element.click();
 	}
 
-	
+
 	public void quit() {
 
 		driver.quit();

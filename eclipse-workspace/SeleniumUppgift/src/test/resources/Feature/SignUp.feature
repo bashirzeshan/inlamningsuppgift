@@ -1,6 +1,6 @@
 Feature: In order to use this application
          I want to register myself as a new user
- 
+
   Scenario Outline: Sign up functionality
     Given user is on the application sign up page
     When I enter EmailID address as "<EmailID>"
@@ -9,22 +9,9 @@ Feature: In order to use this application
     And I click on the sign up
     Then the new user should be created "<Newuser>"
 
-    @NewUser
     Examples: 
-      | EmailID               | Username    | Password    | Newuser |
-      | user | xyz123456 | Test?tes123 | No      |
-
-    @UserNameIsNotValid
-    Examples: 
-      | EmailID               | Username                                                                                                                                                                                                                                                                        | Password    | Newuser |
-      | user| ab646464646uidhweuifhiuwefhueiwhfuiewhfuiewhfiuewhfiuewhfiuewhfiuewhfiuewhfiuwehfiuewhfiuewhfiuewhfiuewhfiuwehfuiewhfiuewhfiuewhfiuewhfiuewhfiuewhfiuewhf1222323hioh2ioehi2e21eih21iuehiu12heiu12heiu13heiuh31eiruh13iurhiu13heiu12heiu12heiu12heui12he1ihei12hei12hei21hei12he | Test?tes123 | No      |
-
-    @EmailIsMissing
-    Examples: 
-      | EmailID | Username  | Password    | Newuser |
-      |         | ab64343s1 | Test?tes123 | No      |
-
-    @UserAlreadyExists
-    Examples: 
-      | EmailID               | Username | Password    | Newuser |
-      | user | user     | Test?tes123 | No      |
+      | EmailID | Username     | Password    | Newuser |
+      | user    | valid        | Test?tes123 | No      |
+      | user    | longuser     | Test?tes123 | No      |
+      |         | valid        | Test?tes123 | No      |
+      | user    | existinguser | Test?tes123 | No      |
